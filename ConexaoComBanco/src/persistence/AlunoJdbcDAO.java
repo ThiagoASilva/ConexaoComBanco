@@ -16,7 +16,7 @@ public class AlunoJdbcDAO {
 	}
 	
 	public void salvar(Aluno a) throws SQLException {
-		String sql = "insert into tb_clientes values ('"+ a.getNome()+"','"+a.getEndereco()+"','"+a.getBairro()+"','";
+		String sql = "insert into alunos(nome, endereco, bairro) values ('"+ a.getNome()+"','"+a.getEndereco()+"','"+a.getBairro()+"','";
 		System.out.println(sql);
 		PreparedStatement preparedStatement = (PreparedStatement) this.conn.prepareStatement(sql);
 		preparedStatement.executeUpdate();
