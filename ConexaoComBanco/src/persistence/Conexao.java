@@ -5,21 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
+	private static Connection conn = null;
 
-	public Conexao() {
-		Connection conn = null;
-		try {
-			String driverName = "com.mysql.jdbc.Driver";
-			Class.forName(driverName);
-			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/java", "root", "");
-			System.out.println("Conectado!");
-		} catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-	
-	public static void main(String args[]) throws SQLException {
-		Conexao conexao = new Conexao();	
+	public static Connection getConexao() throws ClassNotFoundException, SQLException {
+
+		String driverName = "com.mysql.jdbc.Driver";
+		Class.forName(driverName);
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/java", "root", "");
+		System.out.println("Conectado!");
+		return conn;
 	}
 }
